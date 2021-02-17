@@ -1,0 +1,121 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    signingConfigs {
+        ssm {
+            def passStore = System.getenv("storePassword")
+            def passKey = System.getenv("keyPassword")
+            def ssmKeyAlias = System.getenv("keyAlias")
+            storeFile file(rootProject.file('Sesame.jks').getCanonicalFile())
+            storePassword "$passStore"
+            keyPassword "$passKey"
+            keyAlias "$ssmKeyAlias"
+        }
+    }
+    defaultConfig {
+        def getGitHash = { ->
+            def stdout = new ByteArrayOutputStream()
+            exec {
+                commandLine 'git', 'rev-parse', '--short', 'HEAD'
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        }
+        applicationId 'co.candyhouse.sesame2'
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 45
+        versionName "2.0.45"
+        vectorDrawables.useSupportLibrary = true
+        buildConfigField("String", "GIT_HASH", "\"${getGitHash}\"")
+    }
+
+    buildTypes {
+        debug {
+//            minifyEnabled true
+//            shrinkResources true
+//            proguardFiles getDefaultProguardFile(
+//                    'proguard-android-optimize.txt'),
+//                    'proguard-rules.pro'
+            buildConfigField("String", "ch_user_server", "\"https://0dkzum4jzg.execute-api.ap-northeast-1.amazonaws.com/dev\"")
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+            buildConfigField("String", "ch_user_server", "\"https://0dkzum4jzg.execute-api.ap-northeast-1.amazonaws.com/prod\"")
+            signingConfig signingConfigs.ssm
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+repositories {
+
+    maven {
+        url "https://jitpack.io"
+    }
+    maven {
+        url "https://github.com/CANDY-HOUSE/SesameSDK_Android/raw/main"
+    }
+
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'co.candyhouse.jp:sesame:2.0.0@aar'
+    implementation('com.amazonaws:aws-android-sdk-auth-userpools:2.16.8@aar') { transitive = true }
+    implementation "com.amazonaws:aws-android-sdk-apigateway-core:2.19.3"
+    implementation 'com.amazonaws:aws-android-sdk-iot:2.19.3'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30"
+
+    implementation deps.support.app_compat
+    implementation deps.support.design
+    implementation deps.support.core_ktx
+    implementation deps.constraint_layout
+    implementation deps.arch_core.runtime
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
+
+    implementation 'pub.devrel:easypermissions:2.0.1'
+
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-guava:$room_version"
+
+    def archLifecycleVersion = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:2.3.0"
+    //noinspection GradleDependency
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+    implementation 'no.nordicsemi.android:dfu:1.11.1'
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'org.zakariya.stickyheaders:stickyheaders:0.7.10'
+
+
+    api 'com.weigan:loopView:0.2.2'
+
+}
+

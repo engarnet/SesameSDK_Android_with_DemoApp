@@ -1,0 +1,185 @@
+<resources>
+    <string name="launching_why_need_location_permission">On Android 6.0 and up, we need permission for accessing location to make Bluetooth work properly. Without that, this application will not be able to discover Sesames.</string>
+    <string name="app_name">Sesame</string>
+    <string name="select_an_avatar">Select an Avatar</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="wins">Wins</string>
+    <string name="done">Done</string>
+    <string name="title_about">About</string>
+    <string name="title_friends">Contacts</string>
+    <string name="title_registered">Registered</string>
+    <string name="title_me">Me</string>
+    <string name="title_list">Sesame</string>
+    <string name="title_detail">Profile</string>
+    <string name="cd_home">Home!!</string>
+    <string name="cd_list">List</string>
+    <string name="cd_form">Form</string>
+    <string name="logout">Log Out</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="qrhint">Scan this QR code with Sesame app to add me on your contact</string>
+    <string name="change_sesame_name">Change Sesame Name</string>
+    <string name="change_sesame_angle">Configure Angles</string>
+    <string name="ssm_update">SesameOS Update</string>
+    <string name="autolock">Auto Lock</string>
+    <string name="ssm_delete">Delete this Sesame</string>
+    <string name="cancel">Cancel</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="delete_friend">Delete the Contact</string>
+    <string name="manual_operated">Movement in Thumbturn</string>
+    <string name="forget_password">Forgot password</string>
+    <string name="verification">Verification</string>
+    <string name="verification_code">Verification code</string>
+    <string name="new_password">New Password</string>
+    <string name="re_send_verification_code">Re-send verification code</string>
+    <string name="send_verification_code">Send verification code</string>
+    <string name="set_lock_position">Set Lock Position</string>
+    <string name="set_unlock_position">Set Unlock Position</string>
+    <string name="second">sec</string>
+    <string name="delete_member">Delete Member</string>
+    <string name="add_member">Add Member</string>
+    <string name="edit_name">Edit Name</string>
+    <string name="manua_lock">Manually Locked</string>
+    <string name="manua_unlock">Manually Unlocked</string>
+    <string name="member">Member</string>
+    <string name="please_configure">Please configure the locked/unlocked angles.</string>
+    <string name="please_complete">Please completely lock/unlock Sesame, and press the buttons below to configure the locked/unlocked positions respectively.</string>
+    <string name="add_contacts">Add Contacts</string>
+    <string name="new_sesame">New Device</string>
+    <string name="scan_the_qr_code">Scan QR Code</string>
+    <!--    <string name="give_cool_name">Give Sesame a cooool name! 😎</string>-->
+    <string name="no_new_devices">No Devices</string>
+
+    <string name="onDeviceDisconnected">onDeviceDisconnected</string>
+    <string name="onProgressChanged">onProgressChanged</string>
+    　
+    <string name="onDeviceDisconnecting">onDeviceDisconnecting</string>
+    <string name="onDeviceConnected">onDeviceConnected</string>
+    　
+    <string name="onDfuProcessStarting">onDfuProcessStarting</string>
+    <string name="onDfuAborted">onDfuAborted</string>
+    <string name="onEnablingDfuMode">onEnablingDfuMode</string>
+    　
+    <string name="onDfuCompleted">onDfuCompleted</string>
+    　
+    <string name="onFirmwareValidating">onFirmwareValidating</string>
+    　
+    <string name="onDfuProcessStarted">onDfuProcessStarted</string>
+    　
+    <string name="onDeviceConnecting">onDeviceConnecting</string>
+
+    <string name="onError">onError</string>
+    <string name="too_close">The locked position and the unlocked position are too close😅</string>
+    <string name="transfer_owner">Transfer ownership to this member</string>
+
+    <string name="reset_the_sesame">Reset the Sesame and trash the key</string>
+    <string name="trash_key">Delete the Sesame</string>
+    <string name="share_key">Share the key of the Sesame</string>
+
+    <string name="on">On</string>
+    <string name="Off">Off</string>
+    <string name="sec3">3 sec</string>
+    <string name="sec5">5 sec</string>
+    <string name="sec7">7 sec</string>
+    <string name="sec10">10 sec</string>
+    <string name="sec15">15 sec</string>
+    <string name="sec30">30 sec</string>
+    <string name="min1">1 min</string>
+    <string name="min2">2 min</string>
+    <string name="min5">5 min</string>
+    <string name="min10">10 min</string>
+    <string name="min15">15 min</string>
+    <string name="min30">30 min</string>
+    <string name="hr1">1 hr</string>
+    <string name="sesame_widget">Widget &amp; Auto Unlock</string>
+    <string name="owner">Owner</string>
+    <string name="manager">Manager</string>
+    <string name="guest">Guest</string>
+
+    <string name="WM2">WiFi Module</string>
+    <string name="Sesame">Sesame</string>
+    <string name="SesameBot">Sesame bot</string>
+    <string name="SesameBike">Sesame Bike</string>
+
+
+    <string name="unLoginHistoryTag">Unlogin user</string>
+
+    <string name="empty_friend">No Contacts</string>
+    <string name="edit_device_name">Edit name</string>
+
+    <string name="wm2_update">Software Update</string>
+    <string name="wm2_ssid">WiFi SSID</string>
+    <string name="wm2_pwk">WiFi Password</string>
+
+    <string name="EditSesameName">Edit Sesame Name</string>
+    <string name="EditWifiModule2Name">Edit WifiModule Name</string>
+
+
+    <string name="shareSesameToFriends">Share Sesame…</string>
+
+    <string name="revoke">Revoke</string>
+    <string name="login">Log In/Sign up</string>
+    <string name="Notification">Notifications</string>
+
+    <string name="VerificationCode">Verification code sent to your email</string>
+
+    <string name="ResetWifiModule2">Reset the WifiModule and trash the key</string>
+    <string name="TrashTheWifiModule2Key">Delete the WiFi Module</string>
+
+    <string name="addSesameToWM2">Add Sesame…</string>
+
+    <string name="wm2NetworkConnectionStatus">Internet Status</string>
+    <string name="modifyGuestKeyTag">Rename the Guest Key</string>
+
+    <string name="key_level">Role &amp; Permission</string>
+    <string name="Wm2WifiOK">WiFi Module is connected to network successfully</string>
+    <string name="BotModeNormal">正常模式英文</string>
+    <string name="BotModeReverse">反轉模式英文</string>
+    <string name="BotModeCell">天花板模式英文</string>
+    <string name="PressModeCell">長壓模式 英文</string>
+
+
+    <!--    <string name="SesameWiget">SesameWiget 英文</string>-->
+    <!--    <string name="login_mail_hint">你的mail 英文</string>-->
+    <string name="wm2_select_ssid">Select your WiFi network</string>
+
+    <string name="nfc_hint">Setup by tapping the NFC tag</string>
+    <string name="no_scan_devices">Bluetooth devices not found</string>
+    <string name="wm2_pwk_hint">Please enter the WiFi password</string>
+
+    <string name="noble">Bluetooth is off</string>
+    <string name="NoBleSignal">Bluetooth signal not found</string>
+    <!--      nordic dfu-->
+    <string name="channel_connected_devices_title">sesame dfu</string>
+    <string name="channel_connected_devices_description">dfu connected in background.</string>
+
+    <string name="wm2_hint">Add Sesame that is to be connected by this WiFi Module:</string>
+    <string name="friend_keys_hint">The following Sesame keys are shared with this contact:</string>
+    <string name="drop_hint">Deleting the %1$s won\'t reset the %1$s. To reset he %1$s, please press the reset button with a pin until the LED light turns off.</string>
+
+
+    <string name="historyLOCK">is locked</string>
+    <string name="historyUNLOCK">is unlocked</string>
+    <string name="historyMANUAL_LOCKED"> "is manually locked</string>
+    <string name="historyMANUAL_UNLOCKED">is manually unlocked</string>
+    <string name="historyAUTOLOCK_UPDATED">\'s Autolock setting is updated</string>
+    <string name="historyMECH_SETTING_UPDATED">\'s angle setting is updated</string>
+    <string name="historyAUTOLOCK">Autolock</string>
+
+    <string name="WigetToggle">Open Sesame</string>
+    <string name="WigetOpenAll">Lock All</string>
+    <string name="WigetCloseAll">Unlock All</string>
+
+    <string name="ssm_qr_hint">Key of the %1$s device</string>
+    <string name="wm2_ap_setting_error">SORRY🙏\n
+Please double check your WiFi password, or put WiFi Module as close to the WiFi router as possible. \n\n
+        Then normally retry for a few times it will get connected successfully.🙏</string>
+
+
+    <string name="auto_mode">Auto Unlock</string>
+    <string name="sesame_autounlock_hint">While checking the current distance(in gray) between your smartphone and Sesame, set the range(in green) where you want Auto Unlock to work.\nAutomatically unlocks via Bluetooth when the phone is nearby.</string>
+
+</resources>
