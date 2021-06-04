@@ -154,7 +154,7 @@ class MainRoomFG : BaseDeviceFG(R.layout.fg_room_main) {
         }
 
         mDeviceModel.ssmosLockDelegates.put(mDeviceModel.ssmLockLiveData.value!!, object : CHSesame2Delegate {
-            override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+            override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                 if (device.deviceStatus == CHSesame2Status.ReceivedBle) {
                     device.connect {}
                 }

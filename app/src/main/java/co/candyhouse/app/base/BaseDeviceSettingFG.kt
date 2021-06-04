@@ -9,7 +9,7 @@ import co.candyhouse.app.R
 import co.candyhouse.app.tabs.devices.ssm2.*
 import co.candyhouse.app.tabs.devices.ssm2.setting.DfuService
 import co.candyhouse.sesame.open.CHBleManager
-import co.candyhouse.sesame.open.CHBleStatisDelegate
+import co.candyhouse.sesame.open.CHBleStatusDelegate
 import co.candyhouse.sesame.open.device.*
 import co.utils.L
 import co.utils.alertview.AlertView
@@ -33,13 +33,13 @@ open class BaseDeviceSettingFG(layout: Int) : BaseDeviceFG(layout), BleStatusUpd
         super.onResume()
         onChange()
 
-        CHBleManager.statusDelegate = object : CHBleStatisDelegate {
+        CHBleManager.statusDelegate = object : CHBleStatusDelegate {
             override fun didScanChange(ss: CHScanStatus) {
                 onChange()
             }
         }
-        mDeviceModel.ssmosLockDelegates[mDeviceModel.ssmLockLiveData.value!!] = object : CHSesameStatusDelegate {
-            override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+        mDeviceModel.ssmosLockDelegates[mDeviceModel.ssmLockLiveData.value!!] = object : CHSesame2Delegate {
+            override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                 onChange()
                 onChangeStatus(status)
                 if (status.value == CHDeviceLoginStatus.Login) {

@@ -25,7 +25,7 @@ import co.utils.alerts.ext.inputTextAlert
 import co.candyhouse.app.base.BleStatusUpdate
 import co.candyhouse.app.tabs.devices.ssm2.*
 import co.candyhouse.sesame.open.CHBleManager
-import co.candyhouse.sesame.open.CHBleStatisDelegate
+import co.candyhouse.sesame.open.CHBleStatusDelegate
 import co.candyhouse.sesame.open.device.*
 
 class WM2SettingFG : BaseDeviceFG(R.layout.fg_wm2_setting), CHWifiModule2Delegate, BleStatusUpdate {
@@ -38,7 +38,7 @@ class WM2SettingFG : BaseDeviceFG(R.layout.fg_wm2_setting), CHWifiModule2Delegat
         L.d("hcia", "WM2SettingFG onResume:")
         onChange()
 
-        CHBleManager.statusDelegate = object : CHBleStatisDelegate {
+        CHBleManager.statusDelegate = object : CHBleStatusDelegate {
             override fun didScanChange(ss: CHScanStatus) {
 //                L.d("hcia", "ss:" + ss)
                 onChange()
@@ -63,12 +63,12 @@ class WM2SettingFG : BaseDeviceFG(R.layout.fg_wm2_setting), CHWifiModule2Delegat
 
             override fun onNetWorkStatusChanged(device: CHWifiModule2, status: CHWifiModule2NetWorkStatus) {
                 ap_icon?.isSelected = status.isAPWork == true
-                iot_ok_line?.visibility = if (status.isIOTWork) View.VISIBLE else View.GONE
+                iot_ok_line?.visibility = if (status.isIOTWork== true) View.VISIBLE else View.GONE
                 net_ok_line?.visibility = if (status.isNetWork == true) View.VISIBLE else View.GONE
 
                 ap_icon?.isSelected = status.isAPWork == true
                 net_icon?.isSelected = status.isNetWork == true
-                iot_icon?.isSelected = status.isIOTWork
+                iot_icon?.isSelected = status.isIOTWork == true
 
                 aping_icon?.visibility = if (status.isAPConnecting) View.VISIBLE else View.GONE
                 neting_icon?.visibility = if (status.isConnectingNet) View.VISIBLE else View.GONE

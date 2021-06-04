@@ -26,10 +26,10 @@ class CHDeviceViewModel : ViewModel(), CHSesame2Delegate, CHWifiModule2Delegate,
     val myChDevices = MutableStateFlow(ArrayList<CHDevices>())
     var neeReflesh = MutableLiveData<Boolean>()
     val wm2LiveData = MutableLiveData<CHWifiModule2>()
-    val ssmLockLiveData = MutableLiveData<SesameLocker>()
+    val ssmLockLiveData = MutableLiveData<CHSesameLocker>()
 
     var wm2Delegates: MutableMap<CHWifiModule2, CHWifiModule2Delegate> = mutableMapOf()
-    var ssmosLockDelegates: MutableMap<SesameLocker, CHSesameStatusDelegate> = mutableMapOf()
+    var ssmosLockDelegates: MutableMap<CHSesameLocker, CHSesame2StatusDelegate> = mutableMapOf()
     fun targetDevice(): CHDevices = when (targetModel) {
         CHProductModel.WM2 -> wm2LiveData.value!!
         else -> ssmLockLiveData.value!!
@@ -139,7 +139,7 @@ class CHDeviceViewModel : ViewModel(), CHSesame2Delegate, CHWifiModule2Delegate,
     }
 
 
-    override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+    override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
         uiScope.launch {
             ssmosLockDelegates.get(device)?.onBleDeviceStatusChanged(device, status, shadowStatus)
         }

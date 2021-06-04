@@ -29,12 +29,10 @@ class DeviceListFG : BaseFG(R.layout.fg_devicelist) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDeviceViewModel.updateDevices()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         leaderboard_list.setEmptyView(empty_view)
         leaderboard_list.adapter = object : GenericAdapter<Any>(mDeviceViewModel.myChDevices.value) {
@@ -109,8 +107,8 @@ class DeviceListFG : BaseFG(R.layout.fg_devicelist) {
                                 mDeviceViewModel.targetModel = CHProductModel.BiKeLock
                                 findNavController().navigate(R.id.action_deviceListPG_to_sesameBikeSettingFG)
                             }
-                            mDeviceViewModel.ssmosLockDelegates.put(ssmBike, object : CHSesameBikeDelegate {
-                                override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+                            mDeviceViewModel.ssmosLockDelegates.put(ssmBike, object : CHSesame2Delegate {
+                                override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                                     setUpBike(ssmBike)
                                 }
                             })
@@ -156,7 +154,7 @@ class DeviceListFG : BaseFG(R.layout.fg_devicelist) {
                                 findNavController().navigate(R.id.action_deviceListPG_to_SesameBot2SettingFG)
                             }
                             mDeviceViewModel.ssmosLockDelegates.put(ssmBot, object : CHSesameBotDelegate {
-                                override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+                                override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                                     setupBot(ssmBot)
                                 }
 
@@ -200,7 +198,7 @@ class DeviceListFG : BaseFG(R.layout.fg_devicelist) {
                                     ssmView.setLock(sesame)
                                 }
 
-                                override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+                                override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                                     setupSSMCell(sesame)
                                 }
                             })

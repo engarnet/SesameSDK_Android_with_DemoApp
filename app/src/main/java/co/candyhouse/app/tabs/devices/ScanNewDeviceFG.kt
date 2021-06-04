@@ -170,7 +170,7 @@ class ScanNewDeviceFG : BaseDeviceFG(R.layout.fg_rg_device) {
 
                                 doRegisterBike(bikeLock)
                                 bikeLock.delegate = object : CHSesameBikeDelegate {
-                                    override fun onBleDeviceStatusChanged(ssmbot: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+                                    override fun onBleDeviceStatusChanged(ssmbot: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                                         doRegisterBike(bikeLock)
                                     }
                                 }
@@ -239,7 +239,7 @@ class ScanNewDeviceFG : BaseDeviceFG(R.layout.fg_rg_device) {
                                 ssmbot.connect {}
                                 doRegisterSSb(ssmbot)
                                 ssmbot.delegate = object : CHSesameBotDelegate {
-                                    override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+                                    override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                                         doRegisterSSb(ssmbot)
                                     }
                                 }
@@ -306,7 +306,7 @@ class ScanNewDeviceFG : BaseDeviceFG(R.layout.fg_rg_device) {
                             sesame.connect {}
                             doRegisterSSM(sesame)
                             sesame.delegate = object : CHSesame2Delegate {
-                                override fun onBleDeviceStatusChanged(device: SesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
+                                override fun onBleDeviceStatusChanged(device: CHSesameLocker, status: CHSesame2Status, shadowStatus: CHSesame2ShadowStatus?) {
                                     if (status == CHSesame2Status.ReadyToRegister) {
                                         doRegisterSSM(sesame)
                                     }
