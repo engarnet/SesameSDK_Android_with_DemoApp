@@ -55,7 +55,7 @@ repositories {
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'co.candyhouse.jp:sesame:2.0.5@aar'
+    implementation 'co.candyhouse.jp:sesame:2.0.7@aar'
     implementation('com.amazonaws:aws-android-sdk-auth-userpools:2.16.8@aar') { transitive = true }
     implementation "com.amazonaws:aws-android-sdk-apigateway-core:2.19.3"
     implementation 'com.amazonaws:aws-android-sdk-iot:2.19.3'

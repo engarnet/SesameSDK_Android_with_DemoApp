@@ -111,9 +111,10 @@ fun CHDevices.getUIPriority(): Int {//數字越大排越後面
 
 fun CHDevices.getFirZip(): Int {
     return when (productModel) {
-        CHProductModel.SS2 -> return R.raw.sesame2_bf1bee1b
-        CHProductModel.SesameBot1 -> return R.raw.ss2sw_0202_1154_be72afb
-        CHProductModel.BiKeLock -> return R.raw.ss2bike_0202_1518_25f6783
+        CHProductModel.SS2 -> return R.raw.sesame_221_0_8c080c
+        CHProductModel.SS4 -> return R.raw.sesame_421_4_50ce5b
+        CHProductModel.SesameBot1 -> return R.raw.ss2sw_212_369eb9
+        CHProductModel.BiKeLock -> return R.raw.ss2bike_213_486b77
         CHProductModel.WM2 -> TODO()
     }
 }

@@ -22,7 +22,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainRoomFG : BaseDeviceFG(R.layout.fg_room_main) {
-    private var hispage = 0
+    private var cursor: Long? = null
+    private var responseCursor: Long? = null
 
     private var mHistorys = ArrayList<CHSesame2History>()
     private var mHistoryss = ArrayList<Pair<String, List<CHSesame2History>>>()
@@ -42,20 +43,27 @@ class MainRoomFG : BaseDeviceFG(R.layout.fg_room_main) {
         })
         room_list?.apply {
             layoutManager = StickyHeaderLayoutManager()
-            if (mHistoryss.size > 0) {
-                adapter = mAdapter
-            }
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {}
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
+                    // (0：靜止, 1：手動滾動, 2：自動滾動)
                     if (newState == 0) {
-                        val firstVisibleItemPosition = (room_list?.layoutManager as StickyHeaderLayoutManager)
-                                .getFirstVisibleItemViewHolder(false)?.positionInSection
-                        if (firstVisibleItemPosition == 0) {
-                            hispage += 1
-                            refleshHistory()
+                        val layoutManager = (room_list?.layoutManager as StickyHeaderLayoutManager)
+                        val firstVisibleItemPosition = layoutManager.getFirstVisibleItemViewHolder(false)?.positionInSection
+                        val firstAdapterPosition = layoutManager.getFirstVisibleItemViewHolder(false)?.adapterPosition
+
+                        if (firstAdapterPosition != null) {
+                            //  firstVisibleItemPosition==0  top of section ,
+                            //  firstAdapterPosition  total count count form top ,
+                            if (firstVisibleItemPosition == 0 && firstAdapterPosition < 20) {
+                                L.d("bbtig", "firstVisibleItemPosition == 0 && firstAdapterPosition < 20")
+                                if (responseCursor != null) {
+                                    cursor = responseCursor
+                                }
+                                refleshHistory()
+                            }
                         }
                     }
                 }
@@ -72,11 +80,13 @@ class MainRoomFG : BaseDeviceFG(R.layout.fg_room_main) {
         swiperefresh?.post {
             swiperefresh?.isRefreshing = true
         }
-        (mDeviceModel.ssmLockLiveData.value as CHSesame2).getHistories(hispage) {
-
+        // 要撈幾頁資料
+        L.d("bbtig", "Cursor: $cursor")
+        (mDeviceModel.ssmLockLiveData.value as CHSesame2).getHistories(cursor) {
             it.onSuccess {
 //                L.d("hcia", "UI收到 歷史it:" + it.javaClass.simpleName)
-                var sesameHistorys = it.data
+                var sesameHistorys = it.data.first
+                responseCursor = it.data.second
                 sesameHistorys = sesameHistorys.filter { his ->
                     his is CHSesame2History.WEBLock ||
                             his is CHSesame2History.WEBUnlock ||
@@ -110,7 +120,8 @@ class MainRoomFG : BaseDeviceFG(R.layout.fg_room_main) {
                         }
                     }
                     mAdapter.notifyAllSectionsDataSetChanged()
-                    if (it is CHResultState.CHResultStateBLE || hispage == 0) {
+                    if (it is CHResultState.CHResultStateBLE || cursor == null) {
+                        L.d("bbtig", "it is CHResultState.CHResultStateBLE || cursor == null")
                         room_list?.layoutManager?.scrollToPosition(room_list?.adapter!!.getItemCount() - 1)
                     }
                 }
@@ -148,7 +159,8 @@ class MainRoomFG : BaseDeviceFG(R.layout.fg_room_main) {
                     .debounce(3000)
                     .collect {
 //                        L.d("hcia", "🧤: <---status:" + it)
-                        hispage = 0
+                        cursor = null
+                        responseCursor = null
                         refleshHistory()
                     }
         }
