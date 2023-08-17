@@ -1,3 +1,4 @@
+#  当前项目SesameSDK_Android文件夹存放Sesame SDK版本 
 ```kotlin
 
 public interface CHWifiModule2 {
@@ -20,5 +21,7 @@ public interface CHWifiModule2 {
     fun testIOTLOCK( result: CHResult<CHEmpty>)   // スマホ --> CANDY HOUSEサーバー --> WiFiModule2 --> セサミを施錠する
     fun testIOTUNLOCK( result: CHResult<CHEmpty>) // スマホ --> CANDY HOUSEサーバー --> WiFiModule2 --> セサミを解錠する
 }
+
+
 
 ```
