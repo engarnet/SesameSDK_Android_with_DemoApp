@@ -1,4 +1,7 @@
-#  当前项目SesameSDK_Android文件夹存放Sesame SDK版本 
+# 当前项目SesameSDK_Android文件夹存放Sesame SDK版本,最新版本2.0.7
+
+
+
 ```kotlin
 
 public interface CHWifiModule2 {
